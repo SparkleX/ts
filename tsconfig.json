@@ -2,7 +2,14 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "outDir": "out",
+        "outDir": "target",
         "sourceMap": true
-    }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
 }
