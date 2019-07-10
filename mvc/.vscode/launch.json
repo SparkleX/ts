@@ -4,15 +4,14 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/mvc/target/index.js",
+            "name": "MVC",
+            "program": "${workspaceFolder}/target/index.js",
             "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": [
-                "${workspaceFolder}/mvc/target/**/*.js"
+                "${workspaceFolder}/target/**/*.js"
             ]
         }
     ]
