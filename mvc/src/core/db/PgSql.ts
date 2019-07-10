@@ -25,11 +25,12 @@ const db:IDatabase<any> = pgp(cn);
 
 export class PgSql implements SqlAccess{
     public async select(sql: string, p?:any) {
-
-        let data = await db.any(sql, p).catch(function (error) {
-            console.log('ERROR:', error)
-          });
-          return data;
+        let data = await db.any(sql, p);
+        /*.catch(function (error) {
+          //  console.log('ERROR:', error)
+            throw error;
+          });*/
+        return data;
     }
     public insert(data: any): void {
         throw new Error("Method not implemented.");

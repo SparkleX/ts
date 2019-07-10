@@ -8,7 +8,7 @@ export class OCRDController extends BaseController{
  
     @Get(':id')
     public async get(req: Request, res: Response): Promise<void> {
-        await super.get(req, res);
+        return await super.get(req, res);
     }
 
     @Get()

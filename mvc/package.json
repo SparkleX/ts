@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@overnightjs/core": "^1.6.9",
+    "@types/node": "^12.6.2",
     "@types/pg-promise": "^5.4.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg-promise": "^8.7.3",
+    "typescript": "^3.5.3"
   }
 }

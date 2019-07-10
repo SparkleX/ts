@@ -10,9 +10,14 @@ export class BaseController {
     }
 
     protected async get(req: Request, res: Response): Promise<void> {
-        var table = this.constructor.name.substr(0,4);        
+        try {
+        var table = this.getTableName();
         var data = await this.db.select(`SELECT * FROM ${table} WHERE id = $1`, req.params.id);
         res.status(200).json(data);
+        }catch(error) {
+            res.status(500).end(error.message);
+            console.debug(error);
+        }
     }
 
     protected async search(req: Request, res: Response): Promise<void> {
@@ -29,7 +34,18 @@ export class BaseController {
     }
  
     protected async delete(req: Request, res: Response): Promise<void> {
-        var data = await this.db.select("SELECT * from test.test");
-        res.status(200).json(data);
+        try {
+        var table = this.getTableName();
+        await this.db.delete(table, req.params.id );
+        res.status(200).end();
+        }
+        catch(error) {
+            res.status(500).end(error.message);
+            console.debug(error);
+        }
     }    
+
+    protected getTableName() {
+        return this.constructor.name.substr(0,4);        
+    }
 }
