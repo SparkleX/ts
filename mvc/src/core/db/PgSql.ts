@@ -5,16 +5,28 @@ import {SqlAccess} from './SqlAccess';
 
 
 
-const pgp:IMain = pgPromise({
-    // Initialization Options
-});
-
 const cn:string = 'postgres://postgres:1234@localhost:5432/postgres';
+
+
+
+const schema = 'test';
+
+const initOptions = {
+    connect: (client:any, dc:any, isFresh:any) => {
+        //if(isFresh) {
+            client.query(`SET search_path TO ${schema}`);
+        //}
+    }
+};
+
+const pgp:IMain = pgPromise(initOptions);
+
 const db:IDatabase<any> = pgp(cn);
 
 export class PgSql implements SqlAccess{
-    public async select(sql: string) {
-        let data = await db.any(sql).catch(function (error) {
+    public async select(sql: string, p?:any) {
+
+        let data = await db.any(sql, p).catch(function (error) {
             console.log('ERROR:', error)
           });
           return data;

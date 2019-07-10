@@ -1,7 +1,7 @@
 import * as bodyParser from 'body-parser'
 import { Server } from '@overnightjs/core'
 
-import { UserController } from '../controller/UserController'
+import { OCRDController } from '../controller/OCRDController'
  
  
 export class HttpServer extends Server {
@@ -10,9 +10,9 @@ export class HttpServer extends Server {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: true}));
 
-        let userController = new UserController();
+        let CoOCRD = new OCRDController();
 
-        super.addControllers([userController]);
+        super.addControllers([CoOCRD]);
         
     }
     public start(port: number) {
@@ -21,4 +21,4 @@ export class HttpServer extends Server {
         })
     }
 }
-export default HttpServer;
+//export default HttpServer;
