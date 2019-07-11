@@ -10,20 +10,15 @@ export class BaseController {
     }
 
     protected async get(req: Request, res: Response): Promise<void> {
-<<<<<<< HEAD
-        var table = this.constructor.name.substr(0,4);        
-        var data = await this.db.select(`SELECT * FROM 
-        ${table} WHERE id = $1`, req.params.id);
-=======
         try {
-        var table = this.getTableName();
-        var data = await this.db.select(`SELECT * FROM ${table} WHERE id = $1`, req.params.id);
->>>>>>> ce42377a359a302b3ee8ac545fa972359cb4a010
-        res.status(200).json(data);
+            var table = this.getTableName();
+            var data = await this.db.select(`SELECT * FROM ${table} WHERE id = $1`, req.params.id);
+            res.status(200).json(data);
         }catch(error) {
             res.status(500).end(error.message);
             console.debug(error);
         }
+        this.db.close();
     }
 
     protected async search(req: Request, res: Response): Promise<void> {

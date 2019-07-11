@@ -6,6 +6,10 @@ import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/cor
 @Controller('api/OCRD')
 export class OCRDController extends BaseController{
  
+    public constructor() {
+        super();
+        console.log("OCRDController.constructor");
+    }
     @Get(':id')
     public async get(req: Request, res: Response): Promise<void> {
         return await super.get(req, res);
