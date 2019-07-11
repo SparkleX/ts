@@ -11,7 +11,8 @@ export class BaseController {
 
     protected async get(req: Request, res: Response): Promise<void> {
         var table = this.constructor.name.substr(0,4);        
-        var data = await this.db.select(`SELECT * FROM ${table} WHERE id = $1`, req.params.id);
+        var data = await this.db.select(`SELECT * FROM 
+        ${table} WHERE id = $1`, req.params.id);
         res.status(200).json(data);
     }
 
