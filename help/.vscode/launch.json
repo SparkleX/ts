@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "node",
             "request": "launch",
@@ -8,6 +9,19 @@
             "program": "${workspaceFolder}/help-promise/target/server.js",
             "outFiles": [
                 "${workspaceFolder}/help-promise/target/**/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "promise-ts",
+            "runtimeExecutable": "nodemon --debug",
+            "restart": true,
+            "cwd":"${workspaceFolder}/promise-ts",
+            "program": "${workspaceFolder}/promise-ts/src/index.js",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen", 
+            "outFiles": [
             ]
         }
     ]
