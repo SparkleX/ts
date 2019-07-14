@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/i031684/github/ts/types-sql"
 		}
 	],
 	"settings": {}

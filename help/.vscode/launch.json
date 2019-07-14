@@ -23,6 +23,15 @@
             "internalConsoleOptions": "neverOpen", 
             "outFiles": [
             ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "node-debug",
+            "restart": true,
+            "cwd":"${workspaceFolder}/proxy-ts",
+            "program": "${workspaceFolder}/proxy-ts/src/index.js",
+
         }
     ]
 }

@@ -1,0 +1,29 @@
+{
+  "name": "types-sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/index.js",
+    "cover": "nyc --reporter=lcov node tests/index.js"
+  },
+  "nyc": {
+    "include": [
+      "**/*.js",
+      "**/*.ts"
+    ],
+    "extension": [
+      ".js",
+      ".ts"
+    ]
+  },
+  "author": "Sun, Xufei",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "sqlite3": "^4.0.9"
+  }
+}
