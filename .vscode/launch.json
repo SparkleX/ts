@@ -9,11 +9,20 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/mvc/target/index.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": [
-                "${workspaceFolder}/mvc/target/**/*.js"
-            ]
-        }
+            "cwd":"${workspaceFolder}/help/express-ts",
+            "program": "${workspaceFolder}/help/express-ts/index.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nodemon",
+            "runtimeExecutable": "nodemon --debug",
+            "restart": true,
+            "cwd":"${workspaceFolder}/help/express-ts",
+            "program": "${workspaceFolder}/help/express-ts/index.js",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+
+        }        
     ]
 }
