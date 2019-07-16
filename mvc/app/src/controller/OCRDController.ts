@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { BaseController} from './BaseController'
+import { BaseController, pool} from './BaseController'
 import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/core'
+//import { Transaction} from '../../../core'
  
 
 @Controller('api/OCRD')
@@ -11,6 +12,8 @@ export class OCRDController extends BaseController{
         console.log("OCRDController.constructor");
     }
     @Get(':id')
+    @Middleware(pool.getMiddleware())
+   // @Transaction
     public async get(req: Request, res: Response): Promise<void> {
         return await super.get(req, res);
     }

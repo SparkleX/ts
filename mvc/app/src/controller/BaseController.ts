@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
 import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/core'
-import { Connection, PgConnection} from '../../../core'
+import { Connection, PgConnection,ConnectionPool, PgConnectionPool, DbUtil} from '../../../core'
+
+
+export var pool = new PgConnectionPool();
 
 
 export class BaseController {
@@ -10,12 +13,10 @@ export class BaseController {
 
     protected async get(req: Request, res: Response): Promise<void> {
         try {
-            var db:Connection  = new PgConnection();
-            await db.open();
+            var db = DbUtil.getConnection(req);
             var table = this.getTableName();
             var data = await db.select(`SELECT * FROM ${table} WHERE id = $1`, [req.params.id]);
             res.status(200).json(data);
-            db.close();
         }catch(error) {
             res.status(500).end(error.message);
             console.debug(error);

@@ -1,5 +1,4 @@
-import {Column} from '../core/metadata/Column'
-import {Table} from '../core/metadata/Table'
+import {Table, Column} from '../../../core'
 
 @Table
 export class DoOCRD {
