@@ -9,3 +9,4 @@ module.exports.Sql = require('./src/repository/Sql').Sql;
 module.exports.BaseRepository= require('./src/repository/BaseRepository').BaseRepository;
 module.exports.RepositoryFactory= require('./src/repository/RepositoryFactory').RepositoryFactory;
 
+module.exports.DbContext= require('./src/db/DbContext').DbContext;

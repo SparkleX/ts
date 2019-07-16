@@ -8,6 +8,7 @@ import { OCRDService } from '../service/OCRDService';
 import { TYPES } from '../config/types';
 import { inject, injectable } from 'inversify';
 import { interfaces, controller, httpGet, httpPost, httpDelete, request, queryParam, response, requestParam } from "inversify-express-utils";
+import { Transaction } from '../config/Middleware';
 
 //@Controller('api/OCRD')
 @controller('/api/OCRD')
@@ -20,9 +21,10 @@ export class OCRDController extends BaseController<DoOCRD,OCRDService>{
     
  
 
-    @httpGet("/service/test", pool.getMiddleware())
+    @httpGet("/service/test", Transaction)
     public async test(req: Request, res: Response): Promise<void>  {
-        var data = await this.service.test(DbUtil.getConnection(req));
+       // var conn = getConnection();
+        var data = await this.service.test();
         res.status(200).json(data);
     }
     public async get(@request() req: Request, @response() res: Response/*, @requestParam("id") id: string*/): Promise<void> {

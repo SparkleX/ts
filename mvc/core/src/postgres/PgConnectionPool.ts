@@ -12,7 +12,7 @@ export class PgConnectionPool implements ConnectionPool {
             port: 5432,
             user: 'postgres',
             password: '1234',
-          //  database:'test',
+            database:'postgres',
             max:20
           });
     }
@@ -23,7 +23,7 @@ export class PgConnectionPool implements ConnectionPool {
         return conn;
     }
 
-    public getMiddleware()
+  /*  public getMiddleware()
     {
         return async function middleware(req, res, next) {
             var conn:Connection = await this.getConnection();
@@ -41,5 +41,5 @@ export class PgConnectionPool implements ConnectionPool {
                 conn.close();
             }
         }.bind(this);
-    }
+    }*/
 }

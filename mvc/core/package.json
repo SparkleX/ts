@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cls-hooked": "^4.3.0",
     "@types/pg": "^7.4.14",
+    "cls-hooked": "^4.2.2",
     "pg": "^7.11.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"

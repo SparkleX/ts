@@ -5,5 +5,5 @@ import { DoOCRD } from '../domain/DoOCRD';
 
 export class OCRDRepository extends BaseRepository<DoOCRD,Number>{
     @Sql("select * from OCRD where name= $1")
-    public async findByName(conn: Connection, params:any[]):Promise<DoOCRD[]> {return null}
+    public async findByName(params:any[]):Promise<DoOCRD[]> {return null}
 }

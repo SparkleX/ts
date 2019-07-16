@@ -7,6 +7,7 @@ import {controller, httpGet, BaseHttpController, HttpResponseMessage, StringCont
 
 export var pool = new PgConnectionPool();
 import {container} from "../config/inversify.config";
+import { Transaction } from '../config/Middleware';
 
 @injectable()
 export class BaseController<T, SERVICE extends BaseService<T, any>>  extends BaseHttpController{
@@ -18,7 +19,7 @@ export class BaseController<T, SERVICE extends BaseService<T, any>>  extends Bas
        this.service = container.get<SERVICE>(serviceName);
    }
    
-    @httpGet("/:id", pool.getMiddleware())
+    @httpGet("/:id", Transaction)
     protected async get(req: Request, res: Response): Promise<void> {
         var data:T[] = await this.service.get(req);
         res.status(200).json(data);

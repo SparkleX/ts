@@ -1,6 +1,7 @@
 import { BaseRepository } from "./BaseRepository";
 import {getRepositoryMetadata} from "./Sql";
 import { Connection } from "../db/Connection";
+import {DbContext} from '../db/DbContext'
 
 export class RepositoryFactory {
 
@@ -18,8 +19,8 @@ export class RepositoryFactory {
 
 class MyProxy implements ProxyHandler<any> {
     get? (target: any, propKey:PropertyKey, receiver: any): any{
-        console.log(`Reading property "${propKey.toString()}"`);
-        console.debug(target.constructor.name);
+        //console.log(`Reading property "${propKey.toString()}"`);
+        //console.debug(target.constructor.name);
         var clazz = target.constructor.name;
         var func = propKey.toString();
         var sql = getRepositoryMetadata(clazz, func);
@@ -28,9 +29,10 @@ class MyProxy implements ProxyHandler<any> {
         //this.__target = target;
         return this.proxyFunction.bind(sql);
     }
-    async proxyFunction (conn:Connection, params?:any[]):Promise<any[]> {
-        console.debug("called");
-        console.debug(this);
+    async proxyFunction (params?:any[]):Promise<any[]> {
+        //console.debug("called");
+       // console.debug(this);
+        var conn:Connection = DbContext.getConnection();
         var sql = this.toString();
         var data = await conn.select(sql, params);
         return data;
