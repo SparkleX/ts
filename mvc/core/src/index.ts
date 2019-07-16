@@ -1,1 +1,2 @@
-export {ClassA} from './ClassA'
+export {Connection} from './db/Connection'
+export {PgConnection} from './postgres/PgConnection'
