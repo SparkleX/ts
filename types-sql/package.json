@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "node tests/index.js",
     "cover": "nyc --reporter=lcov node tests/index.js"
   },
@@ -20,6 +21,8 @@
   "author": "Sun, Xufei",
   "license": "ISC",
   "dependencies": {
+    "@types/pg": "^7.4.14",
+    "pg": "^7.11.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },

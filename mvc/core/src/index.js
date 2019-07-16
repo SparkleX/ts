@@ -1,2 +1,2 @@
 require('ts-node').register();
-require('./OrderTest');
+require('./Main');

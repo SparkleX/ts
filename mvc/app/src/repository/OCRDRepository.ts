@@ -1,9 +1,9 @@
-import {BaseRepository,Sql} from '../../../core'
+//import {BaseRepository} from '../../../core/src/repository/BaseRepository'
+import {Sql} from '../../../core/src/repository/Sql';
 import { DoOCRD } from '../domain/DoOCRD';
 
-//@injectable()
-export class OCRDRepository extends BaseRepository<DoOCRD,Number>{
 
+export class OCRDRepository {//extends BaseRepository<DoOCRD,Number>{
     @Sql("select * from OCRD where name=?")
-    public async findByName(name:string):Promise<DoOCRD[]> {return null}
+    public findByName(name:string):DoOCRD[] {return null}
 }

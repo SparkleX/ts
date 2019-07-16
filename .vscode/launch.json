@@ -9,8 +9,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "cwd":"${workspaceFolder}/help/express-ts",
-            "program": "${workspaceFolder}/help/express-ts/index.js",
+            "cwd":"${workspaceFolder}/mvc/app",
+            "program": "${workspaceFolder}/mvc/app/index.js",
         },
         {
             "type": "node",

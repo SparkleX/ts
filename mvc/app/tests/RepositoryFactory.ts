@@ -1,14 +1,9 @@
-import { BaseRepository } from "./BaseRepository";
-import { Connection } from "../db/Connection";
 import {getRepositoryMetadata} from "./Sql";
 
-export class RepositoryContext {
-    conn: Connection;
-    public constructor(conn:Connection) {
-        this.conn = conn;
-    }
-    public  newRepository<REPO extends BaseRepository<any,any>>(c: new (conn:Connection) => REPO): REPO {
-        var face:REPO = new c(this.conn);
+export class RepositoryFactory {
+
+    public static   newRepository<REPO >(c: new () => REPO): REPO {
+        var face:REPO = new c();
         var proxyHandler = new MyProxy();
         var p = new Proxy(face, proxyHandler);
 
