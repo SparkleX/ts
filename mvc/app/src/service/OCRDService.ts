@@ -4,13 +4,12 @@ import { DoOCRD } from "../domain/DoOCRD";
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
 import { OCRDRepository } from "../repository/OCRDRepository";
+import { Connection } from "../../../core";
 
 @injectable()
 export class OCRDService extends BaseService<DoOCRD, OCRDRepository>{
 
-    public test():Promise<DoOCRD[]> {
-        //return this.repo.findByName("1");
-        return null;
+    public async test(conn:Connection):Promise<DoOCRD[]> {
+        return await this.repo.findByName("1");
     }
-
 }

@@ -18,19 +18,18 @@ export class OCRDController extends BaseController<DoOCRD,OCRDService>{
 
 
     
-    public async get(@request() req: Request, @response() res: Response/*, @requestParam("id") id: string*/): Promise<void> {
-        //console.debug(this.service1);
-        //console.debug(id);
-        return await super.get(req, res);
-    }
+ 
 
-   // @Get()
+    @httpGet("/service/test", pool.getMiddleware())
     public async test(req: Request, res: Response): Promise<void>  {
-        var id = req.params.id;
-
-      //  await super.search(req, res);
+        this.service.test(DbUtil.getConnection(req));
+        super.ok().executeAsync();
     }
-
+    public async get(@request() req: Request, @response() res: Response/*, @requestParam("id") id: string*/): Promise<void> {
+      //console.debug(this.service1);
+      //console.debug(id);
+      return await super.get(req, res);
+  }
    // @Get()
     public async search(req: Request, res: Response): Promise<void>  {
       // await super.search(req, res);
