@@ -12,7 +12,7 @@ export class PgConnectionPool implements ConnectionPool {
             port: 5432,
             user: 'postgres',
             password: '1234',
-            database:'test',
+          //  database:'test',
             max:20
           });
     }

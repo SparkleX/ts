@@ -1,9 +1,10 @@
-//import { BaseRepository } from "./BaseRepository";
+import { BaseRepository } from "./BaseRepository";
 import {getRepositoryMetadata} from "./Sql";
+import { Connection } from "../db/Connection";
 
 export class RepositoryFactory {
 
-    public static   newRepository<REPO >(c: new () => REPO): REPO {
+    public static newRepository<REPO extends BaseRepository<any,any>>(c: new () => REPO): REPO {
         var face:REPO = new c();
         var proxyHandler = new MyProxy();
         var p = new Proxy(face, proxyHandler);
@@ -27,10 +28,11 @@ class MyProxy implements ProxyHandler<any> {
         //this.__target = target;
         return this.proxyFunction.bind(sql);
     }
-    proxyFunction ():any {
+    async proxyFunction (conn:Connection, params?:any[]):Promise<any[]> {
         console.debug("called");
         console.debug(this);
-
-        return null;
+        var sql = this.toString();
+        var data = await conn.select(sql, params);
+        return data;
     }
 }

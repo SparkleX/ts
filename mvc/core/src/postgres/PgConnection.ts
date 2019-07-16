@@ -6,7 +6,7 @@ var pool:Pool = new Pool({
     port: 5432,
     user: 'postgres',
     password: '1234',
-    database:'test',
+    database:'postgres',
     max:20
   });
 

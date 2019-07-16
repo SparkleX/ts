@@ -22,8 +22,8 @@ export class OCRDController extends BaseController<DoOCRD,OCRDService>{
 
     @httpGet("/service/test", pool.getMiddleware())
     public async test(req: Request, res: Response): Promise<void>  {
-        this.service.test(DbUtil.getConnection(req));
-        super.ok().executeAsync();
+        var data = await this.service.test(DbUtil.getConnection(req));
+        res.status(200).json(data);
     }
     public async get(@request() req: Request, @response() res: Response/*, @requestParam("id") id: string*/): Promise<void> {
       //console.debug(this.service1);
