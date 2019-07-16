@@ -18,8 +18,8 @@
             "name": "nodemon",
             "runtimeExecutable": "nodemon --debug",
             "restart": true,
-            "cwd":"${workspaceFolder}/help/express-ts",
-            "program": "${workspaceFolder}/help/express-ts/index.js",
+            "cwd":"${workspaceFolder}/mvc/app",
+            "program": "${workspaceFolder}/mvc/app/index.js",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
 

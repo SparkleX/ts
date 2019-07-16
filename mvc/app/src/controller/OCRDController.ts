@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { BaseController, pool} from './BaseController'
 import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/core'
+import { DoOCRD } from '../domain/DoOCRD';
 //import { Transaction} from '../../../core'
- 
+import { DbUtil} from '../../../core'
 
 @Controller('api/OCRD')
-export class OCRDController extends BaseController{
+export class OCRDController extends BaseController<DoOCRD>{
  
     public constructor() {
         super();

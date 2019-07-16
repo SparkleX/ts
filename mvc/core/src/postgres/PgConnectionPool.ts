@@ -35,6 +35,7 @@ export class PgConnectionPool implements ConnectionPool {
             }catch(err){
                 console.error(err);
                 conn.rollback();
+                res.status(500).end(err.message);
             }
             finally{
                 conn.close();

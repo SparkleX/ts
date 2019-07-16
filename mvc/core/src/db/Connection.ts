@@ -1,6 +1,6 @@
 export interface Connection {
     execute(sql:string, params?:any[]):Promise<void>
-    select(sql:string, params?:any[]):Promise<any>
+    select(sql:string, params?:any[]):Promise<any[]>
     open():Promise<void>;
     close():Promise<void>;
     select(sql: string, params?: any[]): Promise<any>;

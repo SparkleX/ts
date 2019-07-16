@@ -20,7 +20,7 @@ export class PgConnection implements Connection {
     public async close(): Promise<void> {
         await this.conn.release();
     }
-    public async select(sql: string, params?: any[]): Promise<any> {
+    public async select(sql: string, params?: any[]): Promise<any[]> {
         let rt = await this.conn.query(sql, params);
         return rt.rows;
        // let rt = await this.conn.task(t=>this.select1(t, sql,p));

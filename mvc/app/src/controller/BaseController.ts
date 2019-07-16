@@ -1,26 +1,20 @@
-import { Request, Response, NextFunction } from 'express'
-import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/core'
+import { Request, Response } from 'express'
 import { Connection, PgConnection,ConnectionPool, PgConnectionPool, DbUtil} from '../../../core'
 
 
 export var pool = new PgConnectionPool();
 
 
-export class BaseController {
+export class BaseController<T> {
     
     constructor() {
     }
 
     protected async get(req: Request, res: Response): Promise<void> {
-        try {
-            var db = DbUtil.getConnection(req);
-            var table = this.getTableName();
-            var data = await db.select(`SELECT * FROM ${table} WHERE id = $1`, [req.params.id]);
-            res.status(200).json(data);
-        }catch(error) {
-            res.status(500).end(error.message);
-            console.debug(error);
-        }
+        var db = DbUtil.getConnection(req);
+        var table = this.getTableName();
+        var data:T[] = await db.select(`SELECT * FROM ${table} WHERE id = $1`, [req.params.id]);
+        res.status(200).json(data);
     }
 
     protected async search(req: Request, res: Response): Promise<void> {

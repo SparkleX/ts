@@ -5,7 +5,7 @@ export class DoOCRD {
     @Column
     id: number;
     @Column
-    bpCode: string;
+    code: string;
     @Column
-    bpName: string;
+    name: string;
 }
