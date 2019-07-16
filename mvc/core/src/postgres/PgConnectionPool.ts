@@ -1,10 +1,9 @@
 import {Connection} from '../db/Connection'
 import {PoolClient, Client, Pool} from 'pg';
-import { ConnectionPool } from '../db/ConnectionPool';
 import { PgConnection } from './PgConnection';
 
 
-export class PgConnectionPool implements ConnectionPool {
+export class PgConnectionPool {
     pool:Pool;
     public constructor(){
         this.pool = new Pool({
@@ -22,24 +21,4 @@ export class PgConnectionPool implements ConnectionPool {
         await conn.open();
         return conn;
     }
-
-  /*  public getMiddleware()
-    {
-        return async function middleware(req, res, next) {
-            var conn:Connection = await this.getConnection();
-            req["__connection"] = conn;
-            try{
-                conn.setAutoCommit(false);
-                next();
-                conn.commit();
-            }catch(err){
-                console.error(err);
-                conn.rollback();
-                res.status(500).end(err.message);
-            }
-            finally{
-                conn.close();
-            }
-        }.bind(this);
-    }*/
 }
