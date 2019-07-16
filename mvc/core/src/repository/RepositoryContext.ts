@@ -1,5 +1,5 @@
 import { BaseRepository } from "./BaseRepository";
-import { Connection } from "./Connection";
+import { Connection } from "../db/Connection";
 import {getRepositoryMetadata} from "./Sql";
 
 export class RepositoryContext {

@@ -1,19 +1,26 @@
 import { Request, Response } from 'express'
 import { Connection, PgConnection,ConnectionPool, PgConnectionPool, DbUtil} from '../../../core'
-
+import { BaseService } from '../service/BaseService';
+import { injectable, inject } from "inversify";
+import { TYPES } from '../config/types';
+import {controller, httpGet, BaseHttpController, HttpResponseMessage, StringContent} from "inversify-express-utils";
 
 export var pool = new PgConnectionPool();
+import {container} from "../config/inversify.config";
 
-
-export class BaseController<T> {
+@injectable()
+export class BaseController<T, SERVICE extends BaseService<T, any>>  extends BaseHttpController{
     
-    constructor() {
-    }
-
+   service:SERVICE;
+   public constructor() {
+       super();
+       var serviceName = this.getTableName() + "Service";
+       this.service = container.get<SERVICE>(serviceName);
+   }
+   
+    @httpGet("/:id", pool.getMiddleware())
     protected async get(req: Request, res: Response): Promise<void> {
-        var db = DbUtil.getConnection(req);
-        var table = this.getTableName();
-        var data:T[] = await db.select(`SELECT * FROM ${table} WHERE id = $1`, [req.params.id]);
+        var data:T[] = await this.service.get(req);
         res.status(200).json(data);
     }
 

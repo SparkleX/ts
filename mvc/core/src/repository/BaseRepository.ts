@@ -1,5 +1,7 @@
-import {Connection} from "./Connection"
+import {Connection} from "../db/Connection"
+import { injectable } from "inversify";
 
+@injectable()
 export class BaseRepository<T, ID>  {
     conn: Connection;
     constructor(conn:Connection) {
