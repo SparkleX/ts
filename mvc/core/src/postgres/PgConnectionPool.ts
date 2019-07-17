@@ -1,6 +1,6 @@
 import {Connection} from '../db/Connection'
-import {PoolClient, Client, Pool} from 'pg';
-import { PgConnection } from './PgConnection';
+import {Pool} from 'pg';
+import {PgConnection} from './PgConnection';
 
 
 export class PgConnectionPool {
@@ -17,8 +17,8 @@ export class PgConnectionPool {
     }
 
     public async getConnection() :Promise<Connection> {
-        var conn = new PgConnection();
-        await conn.open();
+        var rawConn = await this.pool.connect();
+        var conn = new PgConnection(rawConn);
         return conn;
     }
 }

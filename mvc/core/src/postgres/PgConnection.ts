@@ -1,21 +1,10 @@
 import {Connection} from '../db/Connection'
 import {PoolClient, Client, Pool} from 'pg';
 
-var pool:Pool = new Pool({
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    password: '1234',
-    database:'postgres',
-    max:20
-  });
-
 export class PgConnection implements Connection {
     conn: PoolClient;
-    public constructor() {
-    }
-    public async open(): Promise<void> {
-        this.conn = await pool.connect();
+    public constructor(conn:PoolClient) {
+        this.conn = conn;
     }
     public async close(): Promise<void> {
         await this.conn.release();
