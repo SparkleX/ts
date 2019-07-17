@@ -1,8 +1,9 @@
-import {Connection} from "../db/Connection"
+import { injectable } from 'inversify';
+import "reflect-metadata";
 
-//@injectable()
+@injectable()
 export class BaseRepository<T, ID>  {
-    async findByKey(conn:Connection, id: ID): Promise<T> {
+    async findByKey(id: ID): Promise<T> {
         return null;
     }
 }

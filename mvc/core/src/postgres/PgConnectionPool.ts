@@ -11,7 +11,7 @@ export class PgConnectionPool {
             port: 5432,
             user: 'postgres',
             password: '1234',
-            database:'postgres',
+            database:'test',
             max:20
           });
     }

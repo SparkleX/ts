@@ -11,9 +11,9 @@ export class BaseService<T, REPO extends BaseRepository<T, Number>> {
     repo:REPO;
     constructor(){
         var repoName = this.getTableName() + "Repository";
-        //this.repo = container.get<REPO>(serviceName);
-        var factory = container.get<REPO>(`Factory<${repoName}>`);
-        this.repo = factory(repoName); 
+        this.repo = container.get<REPO>(repoName);
+        //var factory = container.get<REPO>(`Factory<${repoName}>`);
+        //this.repo = factory(repoName); 
     }
     public async get(req: Request): Promise<T[]> {
         var db = DbUtil.getConnection(req);

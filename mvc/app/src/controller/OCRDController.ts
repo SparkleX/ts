@@ -22,12 +22,13 @@ import { Transaction } from "../config/Middleware";
 
 @controller("/api/OCRD")
 export class OCRDController extends BaseController<DoOCRD, OCRDService> {
-  @httpGet("/service/test", Transaction)
-  public async test(req: Request, res: Response): Promise<void> {
-    // var conn = getConnection();
+  
+  @httpGet("/svc/test", Transaction)
+  public async test(): Promise<any> {
     var data = await this.service.test();
-    res.status(200).json(data);
+    return this.json(data);
   }
+
   @httpGet("/1/bind", Transaction)
   public async testBind():Promise<any> {
     const content = { foo: "bar" };

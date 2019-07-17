@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "Launch Program",
             "cwd":"${workspaceFolder}/mvc/app",
-            "program": "${workspaceFolder}/mvc/app/index.js",
+            "program": "${workspaceFolder}/mvc/app/src/index.js",
         },
         {
             "type": "node",

@@ -16,8 +16,13 @@ function repositoryFactory(context: interfaces.Context) {
 
 const container = new Container();
 container.bind<OCRDService>(TYPES.OCRDService).to(OCRDService);
-//container.bind<OCRDRepository>(TYPES.OCRDRepository).to(OCRDRepository);
-container.bind<interfaces.Factory<OCRDRepository>>("Factory<OCRDRepository>").toFactory<OCRDRepository>(repositoryFactory);
+container.bind<OCRDRepository>(TYPES.OCRDRepository).to(OCRDRepository).onActivation( 
+    (context, repo) => {
+        var proxyRepo = RepositoryFactory.newRepository(repo.constructor);
+        return proxyRepo;
+    }
+);
+//container.bind<interfaces.Factory<OCRDRepository>>("Factory<OCRDRepository>").toFactory<OCRDRepository>(repositoryFactory);
 
 
 //let logger = makeLoggerMiddleware();
