@@ -1,7 +1,8 @@
 
 require('ts-node').register();
-//require('./Main');
-var ClassImpl = function (){
+require('./Main');
+
+/*var ClassImpl = function (){
      this.test = function()  {
         console.debug("test");
     }
@@ -27,4 +28,4 @@ var ProxyHandler =   function (){
   
   var proxy1 = new Proxy(new ClassImpl(), new ProxyHandler());
   
-proxy1.test();  
+proxy1.test();  */
