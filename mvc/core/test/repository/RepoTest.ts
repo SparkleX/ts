@@ -1,9 +1,11 @@
-import {RepositoryFactory, RepositoryHandler} from "../../src/repository/RepositoryFactory"
+import {describe,it} from "mocha"
 import {expect} from 'chai';
-import {mock, instance,verify,deepEqual} from "ts-mockito"
+import {mock, instance,verify,deepEqual, when} from "ts-mockito"
 
+import {RepositoryFactory, RepositoryHandler} from "../../src/repository/RepositoryFactory"
 import {OrderRepository} from "./OrderRepository"
-import { circularDependencyToException } from "inversify/dts/utils/serialization";
+import { Order } from "./Order";
+
 
 class RepoHandlerImpl implements RepositoryHandler {
     execute(sql: string, ...params: any): Promise<any> {
@@ -20,14 +22,20 @@ describe('Main Test', () => {
     });
     afterEach(function() {
     });   */ 
-    it('Success Sample', () => {
-
+    it('Simple Repository', async () => {
+        //mock
         let mockedHandler:RepoHandlerImpl = mock(RepoHandlerImpl);
         let mockInstance:RepoHandlerImpl = instance(mockedHandler);
-
+        //prepare data
+        var rt:Order[] = [];
+        when(mockedHandler.execute("select * from Order where code = ?",deepEqual(["1"]))).thenResolve(rt);
+        //test
         var orderRepository = RepositoryFactory.newRepository(OrderRepository, mockInstance);
-        orderRepository.findByCode("1");
-        verify(mockedHandler.execute("select * from Order where code = ?",deepEqual(["1"]))).called();
+        var result = await orderRepository.findByCode("1");        
+        //verify data
+        expect(result).to.equal(rt);
+        //verify mock
+        verify(mockedHandler.execute("select * from Order where code = ?",deepEqual(["1"]))).called();        
     });
     it('Success Sample', () => {
 

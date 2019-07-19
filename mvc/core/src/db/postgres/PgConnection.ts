@@ -1,4 +1,4 @@
-import {Connection} from '../db/Connection'
+import {Connection} from '../Connection'
 import {PoolClient, Client, Pool} from 'pg';
 
 export class PgConnection implements Connection {

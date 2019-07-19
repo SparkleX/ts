@@ -1,4 +1,4 @@
-import {Connection} from '../db/Connection'
+import {Connection} from '../Connection'
 import {Pool} from 'pg';
 import {PgConnection} from './PgConnection';
 
