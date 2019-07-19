@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register test/**/*Test.ts",
+    "test-dbg": "mocha debug -r ts-node/register test/**/*Test.ts"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +21,11 @@
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "ts-mockito": "^2.3.1"
+  }
 }

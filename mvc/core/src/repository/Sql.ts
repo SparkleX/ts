@@ -1,3 +1,4 @@
+import * as rm from "reflect-metadata"
 var repoMap:any = {};
 export function getRepositoryMetadata(clazz:string, func:string):string {
     return repoMap[clazz][func];

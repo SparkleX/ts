@@ -23,6 +23,21 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
 
+        }     ,
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test",
+            "restart": true,
+            "cwd":"${workspaceFolder}/mvc/core",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script", "test-dbg"
+            ],
+            "port": 9229,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"            
         }        
+
     ]
 }
