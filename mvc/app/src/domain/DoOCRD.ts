@@ -1,11 +1,11 @@
-import {Table, Column} from '../../../core'
+import {Table, Column} from 'next-core'
 
-@Table
+@Table()
 export class DoOCRD {
-    @Column
+    @Column()
     id: number;
-    @Column
+    @Column()
     code: string;
-    @Column
+    @Column()
     name: string;
 }

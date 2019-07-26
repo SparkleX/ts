@@ -1,4 +1,4 @@
-import {PgConnectionPool, Connection,DbContext} from "../../../core"  
+import {PgConnectionPool, Connection,DbContext} from "next-core"  
 var connPool = new PgConnectionPool();
 
 export async function Transaction(req, res, next) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Connection, PgConnection,ConnectionPool, PgConnectionPool, DbUtil} from '../../../core'
+import { PgConnectionPool} from 'next-core'
 import { BaseService } from '../service/BaseService';
 import { injectable, inject } from "inversify";
 import { TYPES } from '../config/types';

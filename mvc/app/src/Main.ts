@@ -28,3 +28,4 @@ server.setConfig(app => {
 
 let app = server.build();
 app.listen(3000);
+console.info('server start at port:3000');

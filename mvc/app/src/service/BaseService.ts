@@ -1,8 +1,8 @@
-import {DbUtil} from "../../../core"
+import {DbContext} from "../../../core"
 import {Request} from "express"
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import {BaseRepository} from "../../../core"
+import {BaseRepository} from "next-core"
 import {container} from "../config/inversify.config";
 
 @injectable()
@@ -16,7 +16,7 @@ export class BaseService<T, REPO extends BaseRepository<T, Number>> {
         //this.repo = factory(repoName); 
     }
     public async get(req: Request): Promise<T[]> {
-        var db = DbUtil.getConnection(req);
+        var db = DbContext.getConnection();
         var table = this.getTableName();
         var data:T[] = await db.select(`SELECT * FROM ${table} WHERE id = $1`, [req.params.id]);
         return data;

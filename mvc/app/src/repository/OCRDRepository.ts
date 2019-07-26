@@ -1,5 +1,4 @@
-import {BaseRepository, Connection} from '../../../core'
-import {Sql} from '../../../core/src/repository/Sql';
+import {BaseRepository, Connection,Sql} from 'next-core'
 import { DoOCRD } from '../domain/DoOCRD';
 import { injectable } from 'inversify';
 import "reflect-metadata";

@@ -1,13 +1,13 @@
 import "reflect-metadata"
 
-export function Column(name: string) {
+export function Column(name?: string) {
     return function (target: any, propertyKey: string) {
         Reflect.defineMetadata("column:name", name, target.__proto__, propertyKey);
     };    
    // return Reflect.metadata("column:name", name);
 }
 
-export function Table(name: string) {
+export function Table(name?: string) {
     return function (constructor: Function) {
         Reflect.defineMetadata("table:name", name, constructor.prototype);
     };

@@ -9,8 +9,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "cwd":"${workspaceFolder}/mvc/app",
-            "program": "${workspaceFolder}/mvc/app/src/index.js",
+            "cwd":"${workspaceFolder}/help/redis-js",
+            "program": "${workspaceFolder}/help/redis-js/index.js",
         },
         {
             "type": "node",

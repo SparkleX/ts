@@ -3,7 +3,6 @@ import { BaseController, pool } from "./BaseController";
 //import { Controller, Middleware, Get, Post, Put, Delete } from '@overnightjs/core'
 import { DoOCRD } from "../domain/DoOCRD";
 //import { Transaction} from '../../../core'
-import { DbUtil } from "../../../core";
 import { OCRDService } from "../service/OCRDService";
 import { TYPES } from "../config/types";
 import { inject, injectable } from "inversify";
