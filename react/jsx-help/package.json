@@ -8,7 +8,7 @@
 	"prebuild": "rimraf ./dist",
 	"build": "npm-run-all --parallel build-public build-js",
 	"build-public":"cpx public/**/*.* dist --watch",
-	"build-js":"webpack --mode development",
+	"build-js":"webpack --mode production",
     "__build": "npx babel src -d dist --extensions .tsx,.jsx --source-maps"
   },
   "keywords": [],
