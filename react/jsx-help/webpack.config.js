@@ -25,6 +25,11 @@ const config = {
 		extensions: ['.js','.ts','.tsx','.jsx']
 	},	
 	devtool: "source-map",
+	watch: true,
+	externals: {
+		"react": "React",
+		"react-dom": "ReactDOM"
+    },	
 	module: {
 		rules: [{
 			test: /\.(jsx|tsx)$/,
