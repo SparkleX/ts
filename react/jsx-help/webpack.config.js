@@ -15,7 +15,9 @@
 const config = {
 	entry: {
 		jsx: './src/jsx/index.jsx',
-		tsx: './src/tsx/index.tsx'
+		tsx: './src/tsx/index.tsx',
+		dialog: './src/dialog/index.tsx',
+		route: './src/route/index.tsx',
 	},
 	output: {
 		filename: '[name]/index.js',
