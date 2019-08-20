@@ -6,7 +6,7 @@ import * as proxy from 'http-proxy-middleware'
 import * as session from 'express-session'
 import {ProxyNode} from './ProxyNode'
 
-let app:Express = express();
+let app = express();
 
 app.use(session({ secret: 'keyboard cat'}))
 app.use(morgan("dev"));
@@ -14,8 +14,8 @@ app.use(compression());
 
 let proxies:ProxyNode[] = [];
 
-for(let port:number = 3001;port<=3002;port++) {
-	let proxyHandler:RequestHandler = proxy({ target: `http://localhost:${port}`, changeOrigin: true,  onProxyRes: onProxyRes, onProxyReq: onProxyReq});
+for(let port = 3001;port<=3002;port++) {
+	let proxyHandler = proxy({ target: `http://localhost:${port}`, changeOrigin: true,  onProxyRes: onProxyRes, onProxyReq: onProxyReq});
 	let proxyNode = new ProxyNode();
 	proxyNode.proxy = proxyHandler;
 	proxyNode.refCount = 0;
@@ -36,17 +36,10 @@ app.use('/', function (req, res, next) {
 });
 
 function onProxyReq(proxyReq, req, res) {
-	/*if(req.session.jwt) {
-		proxyReq.setHeader('authorization', req.session.jwt);
-	}*/
+
   }
 function onProxyRes(proxyRes, req, res) {
-	/*const jwtHeader = 'y-authorization';
-	let auth = proxyRes.headers[jwtHeader];
-	delete proxyRes.headers[jwtHeader];
-	if(auth) {
-		req.session.jwt = auth;
-	}*/
-  }
-  app.listen(3000);
+
+}
+app.listen(3000);
 
