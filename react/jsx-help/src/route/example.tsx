@@ -1,9 +1,13 @@
-import * as React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from "react";
+import * as ReactRouterDOM from "react-router-dom";
+//, { BrowserRouter as Router, Route, Link }
+const { BrowserRouter , Route, Link }  = ReactRouterDOM;
+
+//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function BasicExample() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <ul>
           <li>
@@ -23,7 +27,7 @@ function BasicExample() {
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

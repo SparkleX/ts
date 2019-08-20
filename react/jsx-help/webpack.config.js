@@ -30,7 +30,8 @@ const config = {
 	watch: true,
 	externals: {
 		"react": "React",
-		"react-dom": "ReactDOM"
+		"react-dom": "ReactDOM",
+		"react-router": "ReactRouter"
     },	
 	module: {
 		rules: [{

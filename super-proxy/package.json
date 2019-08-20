@@ -1,0 +1,30 @@
+{
+  "name": "super-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "npx nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/express-session": "^1.15.14",
+    "@types/http-proxy-middleware": "^0.19.3",
+    "@types/node": "^12.7.2",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "http-proxy-middleware": "^0.19.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/morgan": "^1.7.37"
+  }
+}
