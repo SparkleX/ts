@@ -1,0 +1,12 @@
+<html>
+		<script>
+			function put() {
+				var x = new XMLHttpRequest();
+				x.open("GET","http://localhost:3001/test",true);
+				x.setRequestHeader("Content-Type", "application/json"); 
+				x.send(); 
+			}
+			</script>
+	<body onload="put()">
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+	<script>
+		function setValue() {
+			window.localStorage.setItem('name','123');
+		}
+		function getValue(){
+			var data = window.localStorage.getItem('name');
+			alert(data);
+		}
+	</script>
+	<body>
+		<input type="button" value="Set" onclick="setValue()"/>
+		<input type="button" value="Get" onclick="getValue()"/>		
+	</body>
+</html>

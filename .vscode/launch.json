@@ -9,8 +9,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "cwd":"${workspaceFolder}/help/redis-js",
-            "program": "${workspaceFolder}/help/redis-js/index.js",
+            "cwd":"${workspaceFolder}/help/mango-tut",
+            "program": "${workspaceFolder}/help/mango-tut/index.js",
         },
         {
             "type": "node",
