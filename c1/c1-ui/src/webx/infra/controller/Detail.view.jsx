@@ -12,7 +12,14 @@ import {Button} from "../../infra/widget/Button.jsx"
 	</div>);
 }*/
 
-
+export class BaseView extends Component {
+	renderContent() {
+		return this.render2();
+	}
+	render2() {
+		return "";
+	}
+}
 
 export class DetailView extends Component {
 	/*static propTypes = {
@@ -28,9 +35,13 @@ export class DetailView extends Component {
 	onClickAdd() {
 		alert('a');
 	}
+	renderContent() {
+
+	}
 	render() {
+			//{this.props.children}
 		return <div>
-			{this.props.children}
+				{this.renderContent()}
 				<Button label = "OK" onClick={this.onClickAdd.bind(this)}></Button>
 				<Button label = "Cancel"></Button>
 			</div>;
