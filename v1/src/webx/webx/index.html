@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="index.js" defer></script>
+	<script src="format-input.js"></script>
+	<script src="label-input.js"></script>
+</head>
+<body>
+		<div id="app">
+			<label-input label="Business Partner Code" bind="OCRD.CardCode" :value="CardCode"></label-input>
+			<label-input label="Business Partner Name" bind="OCRD.CardCode" v-model="CardName"></label-input>
+			<format-input bind="OCRD.CardCode" v-model="CardCode"></format-input>
+			<input v-model="CardCode"></input>
+			<input v-model="CardName"></input>
+			<button v-on:click="onGetValue">Get Value</button>
+		</div>	
+</body>
+</html>

@@ -11,36 +11,39 @@
     ]
   }
 };*/
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const config = {
 	entry: {
-		test: './src/webx/test/index.jsx',
-		aaa: './src/webx/aaa/index.jsx',
-		"test.vu": './src/webx/test.vu/index.js'
+		jour: './src/webx/jour/index.js',
 	},
 	output: {
 		filename: '[name]/index.js',
 		path: __dirname + '/dist/webx'
 	},
 	resolve: {
-		extensions: ['.js','.ts','.tsx','.jsx']
+		extensions: ['.js','.vue']
 	},	
 	devtool: "source-map",
 	watch: true,
 	externals: {
-		"react": "React",
-		"react-dom": "ReactDOM",
-		"react-router": "ReactRouter"
     },	
 	module: {
-		rules: [{
-			test: /\.(jsx|tsx)$/,
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader'
+			},			
+			{
+			test: /\.js$/,
 			exclude: /node_modules/,
-			use: {
-				loader: "babel-loader"
-			}
+			loader: "babel-loader"
 		}]
-	}	
+	},
+	plugins: [
+	  // make sure to include the plugin!
+	  new VueLoaderPlugin()
+	]	
 }
 
 

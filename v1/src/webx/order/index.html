@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="../../infra/widget/format-input.js"></script>
+	<script src="../../infra/widget/label-input.js"></script>
+	<script src="index.js" defer></script>
+</head>
+<body>
+		<div id="app-4">
+			<format-input v-model="Balance"></format-input>
+			<input v-model="Balance"/>{{Balance}}<br></br>
+			<label-input  label= "Balance" v-model="Balance"></label-input><br></br>
+			<format-input v-model="BalanceFC"></format-input>
+			<input v-model="BalanceFC"/>{{BalanceFC}}<br></br>
+
+			<input v-model="CardCode"/>
+			<input v-model="CardName"/>
+		</div>	
+</body>
+</html>
