@@ -1,0 +1,33 @@
+{
+  "name": "any-sql-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "npx rimraf -rf .nyc_output dist coverage",
+    "prebuild": "npm run clean",
+    "build": "npx tsc",
+    "postbuild": "npm run cover",
+    "build:dev": "npx nodemon",
+    "test": "npx mocha -r ts-node/register tests/**/*Test.ts",
+    "cover": "npx nyc mocha -r ts-node/register tests/**/*Test.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.5"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.2.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.2",
+    "nyc": "^14.1.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.4.1",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.6.3"
+  }
+}
