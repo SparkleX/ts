@@ -1,26 +1,50 @@
 import {Connection} from '../../src/Connection'
 import {MySqlConnection} from '../../src/mysql/MySqlConnection'
-//import * as chai from 'chai'
-import { expect } from 'chai'
-//import * as chaiAsPromised from "chai-as-promised"
-//chai.use(chaiAsPromised);
+import { expect,assert} from 'chai'
 //import { suite, test, slow, timeout } from "mocha";
 import {} from 'mocha';
-//var expect = chai.expect;
+
+var config = {
+	host     : 'localhost',
+	user     : 'root',
+	password : 'password',
+	database : 'mysql'
+}
+
 describe('Main Test', () => {
-    before(function() {
-        console.log('before');
+    before(async function() {
+		var conn = new MySqlConnection();
+		conn.open(config);
+		await conn.execute('drop database if exists test');
+		await conn.execute('create database test');
+		await conn.execute('use test');
+		await conn.execute('create table test(a int not null,b varchar(50) not null, primary key(a))');
+		config.database = 'test';
+		conn.close();
     });
-    after(function() {
-        console.log('after');
-    });
-    beforeEach(function() {
-        console.log('beforeEach');
-    });
-    afterEach(function() {
-        console.log('afterEach');
-    });    
+
     describe('Test1', () => {
+		var conn = new MySqlConnection();
+		before(function() {
+			conn.open(config);		
+		});		
+        it('Query', async() => {
+			const {rowAffected, rows} = await conn.execute('select * from test');
+		});
+        it('Query Fail',  async () =>{
+			try {
+				await conn.execute('select *1 from test');
+			 	assert(false);
+			}catch(err) {
+				expect(err).to.be.an('error');
+			}
+		});	
+		after(function() {
+			conn.close();
+		});			
+	});
+
+    describe('Test Transaction', () => {
 		var conn = new MySqlConnection();
 		before(function() {
 			const config = {
@@ -30,43 +54,43 @@ describe('Main Test', () => {
 				database : 'test'
 			  }
 			conn.open(config);		
-		});		
-        it('Success Sample', async() => {
-			const {rowAffected, rows} = await conn.execute('select * from test');
-			console.info(JSON.stringify(rows));
+		});			
+        it('Success Transaction', async() => {
+			await conn.transaction(async function() {
+				await conn.execute('insert into test(a,b) values(?,?)', [1,'a'] );
+			});   
+			var rows = await conn.execute('select * from test'); 
+			assert(rows.rows.length==1);
 		});
-        it('Query Fail', async() => {
-			await expect(conn.execute('select *1 from test')).to.be.rejected;
-		/*	try {
-				await conn.execute('select *1 from test');
-			  } catch (err) {
-			  }		*/	
-			
-		});	
+        it('Failed Transaction', async() => {
+	
+			await conn.execute('delete from test');
+			try {
+				await conn.transaction(async function() {
+					await conn.execute('insert into test(a,b) values(?,?)', [1,'a'] );
+					await conn.execute('insert into test(a,b) values(?,?)', [2,'b'] );
+					throw new Error();
+				});
+			}catch(err) {
+
+			}
+			var rows = await conn.execute('select * from test');
+			assert(rows.rows.length==0);
+		});
+      /*  it('Failed Commit', async() => {
+			try {
+				await conn.transaction(async function() {
+					await conn.execute('commit');
+					assert(false);
+				});
+			}catch(err) {
+				console.debug(err);
+			}
+		});*/
 		after(function() {
 			conn.close();
 		});			
-	});
-
-    describe('Test Transaction', () => {
-        it('Success Sample', async() => {
-			var conn = new MySqlConnection();
-			expect(() => conn.beginTrans()).to.throw();
-          
-        });
-	});	
-       describe('Test Transaction', () => {
-        it('Success Sample', async() => {
-			var conn = new MySqlConnection();
-			expect(() => conn.commit()).to.throw();
-        });
-    });	
-	describe('Test Transaction', () => {
-		it('Success Sample', async() => {
-			var conn = new MySqlConnection();
-			expect(() => conn.rollback()).to.throw();
-				
-		});
-	});	
+	});		
 
 });
+

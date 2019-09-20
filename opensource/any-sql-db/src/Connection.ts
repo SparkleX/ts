@@ -1,9 +1,7 @@
 export abstract class Connection {
-	protected connection:any;
+	protected conn:any;
 	public abstract open(config:any):void;
 	public abstract close():void;
-	public abstract async beginTrans():Promise<void>;
-	public abstract async commit():Promise<void>;
-	public abstract async rollback():Promise<void>;
-	public abstract async execute(sql:string, params:[]):Promise<{rowAffected:number, rows:[]}>;
-}
+	public abstract async transaction( callback:()=>void):Promise<void>;
+	public abstract async execute(sql:string, params?:any[]):Promise<{rowAffected:number, rows:any[]}>;
+};
