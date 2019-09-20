@@ -1,5 +1,5 @@
 import {DataSource, Connection, MySqlDataSource} from "any-sql-db";
-import {DdlUtil} from "any-sql-crud";
+//import {DdlUtil} from "any-sql-crud";
 import * as express from "express"
 
 console.debug = function(){};
@@ -15,7 +15,7 @@ async function init() {
 		database        : 'test'
 	  };
 	var dataSource:DataSource = new MySqlDataSource(config);	
-	await DdlUtil.createTables();
+	//await DdlUtil.createTables();
 	var app = express();
 
 	app.get('/', function (req, res) {

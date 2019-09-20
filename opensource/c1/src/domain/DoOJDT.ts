@@ -1,4 +1,4 @@
-@Table()
+/*@Table()
 export class DoOJDT {
 	@Column('"AbsId"')
 	public AbsId:number;
@@ -6,4 +6,4 @@ export class DoOJDT {
 	public Balance:number;
 	@Column('"Note"')
 	public Note:string;
-}
+}*/

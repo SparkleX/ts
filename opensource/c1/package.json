@@ -4,12 +4,14 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "start": "npx ts-node server"
+	"start:dev": "npx ts-node server",
+	"start": "node dist/server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "pm2": "^3.5.1",
     "typescript": "^3.6.3"
   }
 }
