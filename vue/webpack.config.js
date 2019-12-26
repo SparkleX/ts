@@ -35,7 +35,16 @@ var config = {
 			{
 				test: /\.(png|jpg|gif)$/,
 				loader: "url-loader"
-			}
+			},
+			{
+				test: /\.css$/,
+				use: [
+					'vue-style-loader',
+					{
+						loader: 'css-loader'
+					}
+				]
+			}			
 		]
 	},
 	plugins: [
@@ -43,8 +52,8 @@ var config = {
 		new HTMLWebpackPlugin({ template: "index.html" }),
 		new CopyWebpackPlugin([
 			{
-				from: "./assets",
-				to: "./assets"
+				from: "./src/assets/",
+				to: "./assets/"
 			}
 		])
 	],
@@ -55,39 +64,23 @@ var config = {
 	},
 };
 
-var loginConfig = Object.assign({}, config, {
-    name: "login",
-    entry: "./src/login/main.js",
+var appConfig = Object.assign({}, config, {
+    name: "app",
+    entry: "./src/main.js",
     output: {
-       path: path.resolve(__dirname, "./dist/login"),
+       path: path.resolve(__dirname, "./dist"),
        filename: "[name].js"
 	},
 	resolve: {
 		extensions: [".js", ".vue"],
 		alias: {
 			vue$: "vue/dist/vue.esm.js",
-			"@": __dirname + "/src/login"
+			"@": __dirname + "/src"
 		}
 	}	
 });
 
-var salesConfig = Object.assign({}, config, {
-    name: "sales",
-    entry: "./src/sales/main.js",
-    output: {
-       path: path.resolve(__dirname, "./dist/sales"),
-       filename: "[name].js"
-	},
-	resolve: {
-		extensions: [".js", ".vue"],
-		alias: {
-			vue$: "vue/dist/vue.esm.js",
-			"@": __dirname + "/src/sales"
-		}
-	}	
-});
-
-module.exports = [loginConfig,salesConfig];
+module.exports = [appConfig];
 
 /*module.exports = {
 	mode: "development",
