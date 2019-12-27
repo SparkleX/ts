@@ -1,7 +1,9 @@
 var path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function resolve(dir) {
 	var test = path.join(__dirname, "..", dir);
@@ -12,7 +14,7 @@ function resolve(dir) {
 
 
 var config = {
-	mode: "development",
+	/*mode: "development",*/
 	resolve: {
 		extensions: [".js", ".vue"],
 		alias: {
@@ -20,7 +22,10 @@ var config = {
 			"@": __dirname + "/src"
 		}
 	},
-	devtool: "inline-source-map",
+	devtool: "source-map",
+	externals: {
+		jquery: 'jQuery'
+	},	
 	module: {
 		rules: [
 			{
@@ -55,7 +60,8 @@ var config = {
 				from: "./src/assets/",
 				to: "./assets/"
 			}
-		])
+		]),
+//		new BundleAnalyzerPlugin()
 	],
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
@@ -70,13 +76,6 @@ var appConfig = Object.assign({}, config, {
     output: {
        path: path.resolve(__dirname, "./dist"),
        filename: "[name].js"
-	},
-	resolve: {
-		extensions: [".js", ".vue"],
-		alias: {
-			vue$: "vue/dist/vue.esm.js",
-			"@": __dirname + "/src"
-		}
 	}	
 });
 

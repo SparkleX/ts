@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <div class="ui container">
+  	<div>
 		<p class="underline">{{ title }}</p>
 		<table>
 			<tr>
@@ -12,14 +11,14 @@
 				<tr :key="idx">
 					<template v-for="col in columns" >
 						<td :key="col">
-							<slot :name="col" v-bind:cell="row[col]"></slot>
+							<!--<slot :name="col" v-bind:cell="row[col]"></slot>--->
+							<slot :name="col" v-bind:row="row"></slot>
 						</td>						
 					</template>
 				</tr>		
 			</template>				
 		</table>
-    </div>
-  </div>
+  	</div>
 </template>
 
 <script>
