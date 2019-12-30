@@ -3,5 +3,9 @@ module.exports = {
 	transform: {
 		"^.+\\.js$": "babel-jest",
 		"^.+\\.vue$": "vue-jest"
-	}
+	},
+	moduleNameMapper: {
+		"^@/(.*)$": "<rootDir>/src/$1"
+	},
+	collectCoverage : true
 }

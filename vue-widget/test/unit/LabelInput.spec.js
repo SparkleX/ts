@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import LabelInput from "../../src/widget/LabelInput.vue";
+import LabelInput from "@/widget/LabelInput.vue";
 
 //https://github.com/vuejs/vue-test-utils-getting-started/blob/master/test.js
 /*describe("LabelInput", () => {
