@@ -2,6 +2,10 @@ import Vue from 'vue'
 //import vuex from 'vuex'
 import App from './App'
 import router from './router'
+import store from './store'
+
+import Relax  from "vue-control"
+Vue.use(Relax)
 
 import DataTable from "@/share/components/DataTable"
 Vue.component('data-table', DataTable);
@@ -15,9 +19,9 @@ import LabelTextArea from "@/share/components/LabelTextArea"
 Vue.component('label-textarea', LabelTextArea);
 Vue.use(LabelTextArea);
 
-import LabelInput from "@/share/components/LabelInput"
-Vue.component('label-input', LabelInput);
-Vue.use(LabelInput);
+//import LabelInput from "@/share/components/LabelInput"
+//Vue.component('label-input', LabelInput);
+//Vue.use(LabelInput);
 
 import LabelDatePicker from "@/share/components/LabelDatePicker"
 Vue.component('label-datepicker', LabelDatePicker);
@@ -36,6 +40,7 @@ Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

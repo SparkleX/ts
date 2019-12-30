@@ -1,0 +1,14 @@
+Order
+
+
+{
+	"DocNumber":100
+	"DocTotal":10.01
+	"SlpCode":1
+}
+
+
+if( data.SlpCode===1)
+{
+	
+}

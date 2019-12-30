@@ -14,7 +14,7 @@ function resolve(dir) {
 
 
 var config = {
-	mode: "development",
+	/*mode: "development",*/
 	resolve: {
 		extensions: [".js", ".vue"],
 		alias: {
@@ -72,7 +72,6 @@ var config = {
 
 var appConfig = Object.assign({}, config, {
     name: "app",
-    entry: "./src/main.js",
     output: {
        path: path.resolve(__dirname, "./dist"),
        filename: "[name].js"
@@ -80,55 +79,3 @@ var appConfig = Object.assign({}, config, {
 });
 
 module.exports = [appConfig];
-
-/*module.exports = {
-	mode: "development",
-	entry: {
-		login: "./src/login/main.js"
-	},
-	output: {
-		path: path.resolve(__dirname, "./dist"),
-		filename: "[name].js"
-	},
-	resolve: {
-		extensions: [".js", ".vue"],
-		alias: {
-			vue$: "vue/dist/vue.esm.js",
-			"@": __dirname + "/src"
-		}
-	},
-	devtool: "inline-source-map",
-	module: {
-		rules: [
-			{
-				test: /\.vue$/,
-				loader: "vue-loader"
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			},
-			{
-				test: /\.(png|jpg|gif)$/,
-				loader: "url-loader"
-			}
-		]
-	},
-	plugins: [
-		new VueLoaderPlugin(),
-		new HTMLWebpackPlugin({ template: "index.html" }),
-		new CopyWebpackPlugin([
-			{
-				from: "./src/assets",
-				to: "./assets"
-			}
-		])
-	],
-	devServer: {
-		contentBase: path.join(__dirname, "dist"),
-		compress: true,
-		port: 3000
-	}
-};
-*/
