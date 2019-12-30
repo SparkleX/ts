@@ -2,11 +2,11 @@
   "name": "vue-control",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/vue-control.umd.js",
+  "main": "dist/vue-control.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
 	"build": "vue-cli-service build",
-	"build-lib": "vue-cli-service build --target lib --dest lib src/components/index.js"
+	"build-lib": "vue-cli-service build --target lib --dest dist src/components/index.js"
   },
   "author": "",
   "license": "ISC",
