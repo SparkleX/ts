@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import Relax from './components'
+import Relax from './widget'
 Vue.config.productionTip = false
 
 Vue.use(Relax)
